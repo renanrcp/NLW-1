@@ -1,5 +1,5 @@
 import express from 'express';
-import knex from 'knex';
+import knex from './database/connection';
 
 const routes = express.Router();
 
