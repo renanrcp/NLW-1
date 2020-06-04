@@ -1,6 +1,6 @@
 import Knex from 'knex';
 
-export async function up(knex: Knex) {
+export const up = async (knex: Knex) => {
     return knex.schema.createTable('point_items', table => {
         table.increments('id').primary();
 
