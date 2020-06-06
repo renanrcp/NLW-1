@@ -1,14 +1,14 @@
-import React, { useEffect, useState, ChangeEvent, FormEvent } from "react";
-import { Link, useHistory } from "react-router-dom";
-import { FiArrowLeft } from "react-icons/fi";
-import { Map, TileLayer, Marker } from "react-leaflet";
-import api from "../../services/api";
-import { LeafletMouseEvent } from "leaflet";
-import axios from "axios";
+import React, { useEffect, useState, ChangeEvent, FormEvent } from 'react';
+import { Link, useHistory } from 'react-router-dom';
+import { FiArrowLeft } from 'react-icons/fi';
+import { Map, TileLayer, Marker } from 'react-leaflet';
+import api from '../../services/api';
+import { LeafletMouseEvent } from 'leaflet';
+import axios from 'axios';
 
-import "./styles.css";
+import './styles.css';
 
-import logo from "../../assets/logo.svg";
+import logo from '../../assets/logo.svg';
 
 interface Item {
   id: number;
@@ -35,13 +35,13 @@ const CreatePoint = () => {
   ]);
 
   const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    whatsapp: "",
+    name: '',
+    email: '',
+    whatsapp: '',
   });
 
-  const [selectedUf, setSelectedUf] = useState("0");
-  const [selectedCity, setSelectedCity] = useState("0");
+  const [selectedUf, setSelectedUf] = useState('0');
+  const [selectedCity, setSelectedCity] = useState('0');
   const [selectedItems, setSelectedItems] = useState<number[]>([]);
   const [selectedPosition, setSelectedPosition] = useState<[number, number]>([
     0,
@@ -59,7 +59,7 @@ const CreatePoint = () => {
   }, []);
 
   useEffect(() => {
-    api.get("items").then((response) => {
+    api.get('items').then((response) => {
       setItems(response.data);
     });
   }, []);
@@ -67,7 +67,7 @@ const CreatePoint = () => {
   useEffect(() => {
     axios
       .get<IBGEUfResponse[]>(
-        "https://servicodados.ibge.gov.br/api/v1/localidades/estados"
+        'https://servicodados.ibge.gov.br/api/v1/localidades/estados'
       )
       .then((response) => {
         const ufInitials = response.data.map((uf) => uf.sigla);
@@ -77,7 +77,7 @@ const CreatePoint = () => {
   }, []);
 
   useEffect(() => {
-    if (selectedUf === "0") {
+    if (selectedUf === '0') {
       return;
     }
 
@@ -150,11 +150,11 @@ const CreatePoint = () => {
       items,
     };
 
-    await api.post("points", data);
+    await api.post('points', data);
 
-    alert("Ponto de coleta criado.");
+    alert('Ponto de coleta criado.');
 
-    history.push("/");
+    history.push('/');
   }
 
   return (
@@ -269,7 +269,7 @@ const CreatePoint = () => {
               <li
                 key={item.id}
                 onClick={() => handleSelectItem(item.id)}
-                className={selectedItems.includes(item.id) ? "selected" : ""}
+                className={selectedItems.includes(item.id) ? 'selected' : ''}
               >
                 <img src={item.image} alt={item.title} />
                 <span>{item.title}</span>

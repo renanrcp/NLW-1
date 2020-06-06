@@ -1,10 +1,10 @@
-import React from "react";
-import { FiLogIn } from "react-icons/fi";
-import { Link } from "react-router-dom";
+import React from 'react';
+import { FiLogIn } from 'react-icons/fi';
+import { Link } from 'react-router-dom';
 
-import "./styles.css";
+import './styles.css';
 
-import logo from "../../assets/logo.svg";
+import logo from '../../assets/logo.svg';
 
 const Home = () => {
   return (
